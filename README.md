@@ -1,2 +1,9 @@
-# as6
- Assignemnt 6 - problems 1 and 2
+# Assignment 3
+ ## Problem 1
+ My general approach starts off by making a List of 500,000 random values. Then the program starts 4 threads that all do the same 3 tasks: remove values from the list and add it to a thread-safe Linkedlist, remove the smallest element from the Linkedlist and send a thank you note, and check if the linkedlist contains a certain value. The main function and its helper functions are pretty straightforward. I will explain the thread-safe linkedlist's function because this is the complex part of the code.
+
+ ### Notes on the thread-safe linkedlist
+ The implementaion of linkedlist that I used uses minimal amount of locking. Traversing the linkedlist normally would require locking, but the specific impementaion that I used does not require locking. Instead a "marked" boolean will be used to indicate whether the node is still a part of the linkedlist. Note here, that the marked boolean will be set to true only when that node is deleted. This will act as a form of validation for us.
+
+ ## Problem 2
+ This problem is more straightforward because this problem can be solved without using Linkedlists. To simulate the problem in a realistic environment, I have decided to that every one second in runtime is equavilant to 10 minutes according to the problem. This means that after 6 seconds, an hour has passed hypothetically. Every second, each thread will get a random temperature and append that temperature to the min and max heaps. At the end, we remove 5 elements from both heaps to get the 5 largest and 5 lowest temperature measurements for that time interval. Durring this time will we store/update the the time interval with the biggest difference in tempratures.
